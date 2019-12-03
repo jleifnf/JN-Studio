@@ -1,11 +1,8 @@
-# Mod 1 Project Instructions
+# JN-Studio
+by Jeff Lin and Nick Zauner
 
-
-## Congratulations! 
-
-Microsoft sees all the big companies creating original video content, and they want to get in on the fun. They have decided to create a **new movie studio**, but the problem is they don’t know anything about creating movies. They have hired you to help them better understand the movie industry. 
-
-Your team is charged with doing data analysis and creating a presentation that explores what type of films are currently doing the best at the box office. You must then translate those findings into actionable insights that the CEO can use when deciding what type of films they should be creating. 
+## Purpose
+What movies produce the best performance at box-office?
 
 ## Methodology 
 Some areas you can look to examine are movie genres (Thriller, Drama, Comedy, etc.), movie ratings, budget, social media discussion, and critic or user reviews. Your team gets to define its _own questions_ about the movie industry and then use its knowledge of descriptive statistics and the EDA process to try and answer those questions. <br>
@@ -17,61 +14,12 @@ Questions to consider:
  - Social media buzz?
 
 ## Data Sources
-Microsoft has provided some data from Box Office Mojo, IMDB, Rotten Tomatoes, and TheMovieDB.org. You are not limited to these data sets! If you find other useful data on the web, you are welcome to include it (but this is not a requirement).
-
-All data lives in [`./zippedData/`](./zippedData).<br>
-Be sure to make a directory named 'data'.<br>
-Once you've unzipped the data, place the .csv's into your newly created data folder<br>
-This will ensure your .csv's don't error out a git push.<br>
-
-- Box Office Mojo
-  - data
-    - bom.movie_gross.csv.gz
-  - documentation
-    - scraped from [this page](https://www.boxofficemojo.com/yearly/chart/?view2=worldwide&yr=2010&p=.htm) (from 2010-2018).
-    - revenue has already been converted into pure dollars
-- IMDB
-  - data
-    - imdb.name.basics.csv.gz
-    - imdb.title.akas.csv.gz
-    - imdb.title.basics.csv.gz
-    - imdb.title.crew.csv.gz
-    - imdb.title.principals.csv.gz
-    - imdb.title.ratings.csv.gz
-  - documentation
-    - All data has come from https://www.imdb.com/interfaces/, just filtered to only 2010-2018 movies.
-- Rotten Tomatoes
-  - data
-    - rt.movie_info.tsv.gz
-    - rt.reviews.tsv.gz
-  - documentation
-    - this came from [Kaggle](https://www.kaggle.com/rpnuser8182/rotten-tomatoes).  All documentation can be found there.
-- TheMovieDB.org
-  - data
-    - tmdb.movies.csv.gz
-  - documentation
-    - all data comes from https://developers.themoviedb.org/3/discover/movie-discover
-    - Again, only 2010-2018 movies have been included.
-  - data
-    - tn.movie_budgets.csv.gz
+  - data:
+    - MovieData.csv
   - documentation
     - This comes straight from [The-Numbers.com](https://www.the-numbers.com/movie/budgets/all)
     - this includes all data from The Numbers! it is not subset to 2010-2018
-- More data!
-  - if you find data you think is helpful, or if there is a data set you don't know how to access but are interested in, please feel free to ask for instructor help via Slack.
 
-Remeber that Pandas can read gzipped data directly passed in with `pd.read_csv`.<br>
-To inspect data on command line without unzipping, you can use `gzip -cd <filename> | head` (I like to think `-cd` stands for Continuous Decompress).
-
-## Deliverables
-Your team must prepare a **5 minute presentation** that gives the CEO insights as to what type of films they should be creating to meet consumer demand. Your presentation should outline the process you went through and use at least 4 meaningful data visualizations to help illustrate your findings. Your team is expected to use git as a collaborative tool for this project to manage version control and history.  No more than 8 slides.
-
-Be prepared to answer questions such as:
-- "how did you pick the question(s) that you did?"
-- "why are these questions important from a business perspective?"
-- "how did you decide on the data cleaning options you performed?"
-- "why did you choose a given method or library?"
-- "why did you select those visualizations and what did you learn from each of them?"
 
 ## Project Checklist:
 - [ ] Use data from at least two sources
