@@ -1,9 +1,11 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def load_clean_data(cols=None):
     if cols is None:
-        cols = ['title', 'year', 'budget', 'rating', 'creative', 'source', 'genre', 'time', 'profit']
+        cols = ['title', 'year', 'budget', 'rating', 'creative', 'source', 'genre', 'time', 'profit', 'sequel']
 
     # Load the movie_data.csv
     movie_data = pd.read_csv('data/MovieData.csv', )
@@ -25,3 +27,20 @@ def load_clean_data(cols=None):
     clean_df = movie_data[cols]
     return clean_df
 
+
+def subset_df(data, col, filt):
+    subset = data.loc[data[col] == filt]
+    return subset
+
+
+def data_bar_graph(data, col, topn=5):
+    avg_ = data.groupby(col).agg('mean').reset_index().sort_values('profit')
+    fig, ax = plt.subplots(figsize=(7, 7))
+    sns.barplot(y=col, x='profit', data=data, order=avg_[col][-topn:], color='steelblue')
+    ax.set(ylabel=col.title(), xlabel='Profit')
+
+
+def data_line_graph(data):
+    fig, ax = plt.subplots(figsize=(7, 7))
+    sns.lineplot(x='year', y='profit', data=data, color='steelblue')
+    ax.set(xlabel='Year', ylabel='Profit', )
