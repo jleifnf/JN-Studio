@@ -25,4 +25,3 @@ def load_clean_data(cols=None):
     clean_df = movie_data[cols]
     return clean_df
 
-load_clean_data()
