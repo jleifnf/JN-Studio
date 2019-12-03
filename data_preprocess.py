@@ -1,6 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 
 def load_clean_data(cols=None):
@@ -36,15 +35,3 @@ def subset_df(data, col, filt):
     subset = data.loc[data[col] == filt]
     return subset
 
-
-def data_bar_graph(data, col, topn=5):
-    avg_ = data.groupby(col).agg('mean').reset_index().sort_values('profit', ascending=False)
-    fig, ax = plt.subplots(figsize=(7, 7))
-    sns.barplot(y=col, x='profit', data=data, order=avg_[col][-topn:], color='steelblue')
-    ax.set(ylabel=col.title(), xlabel='Profit ($ millions)')
-
-
-def data_line_graph(data, col):
-    fig, ax = plt.subplots(figsize=(7, 7))
-    sns.lineplot(x='year', y='profit', hue=col, data=data, color='steelblue')
-    ax.set(xlabel='Year', ylabel='Profit ($ millions)', title='{}'.format(col.title()))
