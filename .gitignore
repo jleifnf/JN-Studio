@@ -104,4 +104,8 @@ venv.bak/
 .mypy_cache/
 
 # DS_Store
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_Store
+>>>>>>> e2937a5f897a2c8905e4b14d162cdf404854d856
