@@ -9,7 +9,7 @@ def load_clean_data(cols=None):
 
     movie_data = pd.read_csv('data/MovieData.csv', )
 
-    inflation_rate = pd.read_csv('data/inflation_rate.csv', index_col='Year')
+    inflation_rate = pd.read_csv('data/inflation_rate.csv')
 
     # Rename the columns
     re_col = {
@@ -20,6 +20,7 @@ def load_clean_data(cols=None):
         'running_time': 'time',
         }
     movie_data = movie_data.rename(columns=re_col)
+
     movie_data['inflation_rate'] = movie_data.year.map(lambda x:
                                                        inflation_rate[inflation_rate['Year'] == x]['Avg-Avg'].values[
                                                            0]/100+1)
