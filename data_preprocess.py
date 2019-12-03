@@ -26,7 +26,7 @@ def load_clean_data(cols=None):
                                                            0]/100+1)
     # Calculate the Profits
     movie_data['world_gross'] = movie_data.domestic_box_office + movie_data.international_box_office
-    movie_data['profit'] = (movie_data.world_gross - movie_data.budget)*movie_data.inflation_rate
+    movie_data['profit'] = (movie_data.world_gross - movie_data.budget)*movie_data.inflation_rate/1e6
 
     clean_df = movie_data[cols]
     return clean_df
@@ -38,13 +38,13 @@ def subset_df(data, col, filt):
 
 
 def data_bar_graph(data, col, topn=5):
-    avg_ = data.groupby(col).agg('mean').reset_index().sort_values('profit')
+    avg_ = data.groupby(col).agg('mean').reset_index().sort_values('profit', ascending=False)
     fig, ax = plt.subplots(figsize=(7, 7))
     sns.barplot(y=col, x='profit', data=data, order=avg_[col][-topn:], color='steelblue')
-    ax.set(ylabel=col.title(), xlabel='Profit')
+    ax.set(ylabel=col.title(), xlabel='Profit ($ millions)')
 
 
-def data_line_graph(data, col, filt):
+def data_line_graph(data, col):
     fig, ax = plt.subplots(figsize=(7, 7))
-    sns.lineplot(x='year', y='profit', data=data, color='steelblue')
-    ax.set(xlabel='Year', ylabel='Profit', title='{} of {} '.format(filt.title(), col.title()))
+    sns.lineplot(x='year', y='profit', hue=col, data=data, color='steelblue')
+    ax.set(xlabel='Year', ylabel='Profit ($ millions)', title='{}'.format(col.title()))
