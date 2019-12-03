@@ -7,8 +7,9 @@ def load_clean_data(cols=None):
     if cols is None:
         cols = ['title', 'year', 'budget', 'rating', 'creative', 'source', 'genre', 'time', 'profit', 'sequel']
 
-    # Load the movie_data.csv
     movie_data = pd.read_csv('data/MovieData.csv', )
+
+    inflation_rate = pd.read_csv('data/inflation_rate.csv', index_col='Year')
 
     # Rename the columns
     re_col = {
@@ -19,10 +20,12 @@ def load_clean_data(cols=None):
         'running_time': 'time',
         }
     movie_data = movie_data.rename(columns=re_col)
-
+    movie_data['inflation_rate'] = movie_data.year.map(lambda x:
+                                                       inflation_rate[inflation_rate['Year'] == x]['Avg-Avg'].values[
+                                                           0]/100+1)
     # Calculate the Profits
     movie_data['world_gross'] = movie_data.domestic_box_office + movie_data.international_box_office
-    movie_data['profit'] = movie_data.world_gross - movie_data.budget
+    movie_data['profit'] = (movie_data.world_gross - movie_data.budget)*movie_data.inflation_rate
 
     clean_df = movie_data[cols]
     return clean_df
@@ -40,7 +43,7 @@ def data_bar_graph(data, col, topn=5):
     ax.set(ylabel=col.title(), xlabel='Profit')
 
 
-def data_line_graph(data):
+def data_line_graph(data, col, filt):
     fig, ax = plt.subplots(figsize=(7, 7))
     sns.lineplot(x='year', y='profit', data=data, color='steelblue')
-    ax.set(xlabel='Year', ylabel='Profit', )
+    ax.set(xlabel='Year', ylabel='Profit', title='{} of {} '.format(filt.title(), col.title()))
