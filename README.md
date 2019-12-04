@@ -1,6 +1,5 @@
 # JN-Studio
 by Jeff Lin and Nick Zauner
-<img src=''>
 
 
 ## Data Sources
@@ -18,5 +17,4 @@ by Jeff Lin and Nick Zauner
    - figures:
        - generated figures from the 'JN-Studio.ipynb' is stored in the 'figs' folder
    - Slides:
-     - 'JN-Studio.pdf' summary presentation (interactive slide available [here](https://prezi.com/view
-    /t9vh470ewlQaudrkFvJ7/))
+     - 'JN-Studio.pdf' summary presentation an interactive slide available [here](https://prezi.com/view/t9vh470ewlQaudrkFvJ7/)
